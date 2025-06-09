@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/birthday-gift-for-di/static/css/main.589264e1.css",
-    "main.js": "/birthday-gift-for-di/static/js/main.ae8d7393.js",
+    "main.js": "/birthday-gift-for-di/static/js/main.c91e284a.js",
     "index.html": "/birthday-gift-for-di/index.html",
     "main.589264e1.css.map": "/birthday-gift-for-di/static/css/main.589264e1.css.map",
-    "main.ae8d7393.js.map": "/birthday-gift-for-di/static/js/main.ae8d7393.js.map"
+    "main.c91e284a.js.map": "/birthday-gift-for-di/static/js/main.c91e284a.js.map"
   },
   "entrypoints": [
     "static/css/main.589264e1.css",
-    "static/js/main.ae8d7393.js"
+    "static/js/main.c91e284a.js"
   ]
 }
