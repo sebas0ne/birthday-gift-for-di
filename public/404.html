@@ -1,0 +1,21 @@
+// src/public/404.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    
+    <!-- ✅ Viewport correctamente definido -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- ✅ Script para redirigir correctamente según React Router -->
+    <script>
+      const redirectTo = sessionStorage.redirect || "/";
+      sessionStorage.removeItem("redirect");
+      location.replace(redirectTo);
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
