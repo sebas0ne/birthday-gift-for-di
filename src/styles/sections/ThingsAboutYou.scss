@@ -1,0 +1,42 @@
+.things-about-you {
+    padding: 100px 20px;
+    background: #000;
+    color: #111;
+    text-align: center;
+  
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      font-family: 'Dancing Script' o 'Parisienne';
+      color: #fff;
+    }
+  
+    .things-about-you-list {
+      max-width: 700px;
+      margin: 0 auto;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .things-about-you-list-item {
+      font-size: 1.3rem;
+      background-color: #000;
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      opacity: 0;
+      transform: translateX(-50px);
+      border: 1px solid;
+  
+      .number {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  }
+  

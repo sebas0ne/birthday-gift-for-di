@@ -1,0 +1,64 @@
+/* MovieCarousel.css */
+
+.movie-carousel-container {
+    max-width: 1200px;
+    max-height: 1200px;
+    margin: 0 auto;
+    padding: 5rem 1rem;
+  }
+  
+  .carousel-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-family: 'Dancing Script' o 'Parisienne';
+  }
+  
+  .movie-carousel {
+    position: relative;
+  }
+  
+  .movie-slide {
+    width: 320px;
+    height: 600px;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease;
+  }
+  
+  .movie-poster:hover {
+    transform: scale(1.05);
+  }
+
+  .carrusel-caption {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 1rem;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .movie-slide {
+        width: 320px;
+        height: 620px;
+    }
+  
+    .carousel-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }

@@ -1,0 +1,28 @@
+// src/styles/main.scss
+
+$color-bg: #fff;
+$color-text: #000;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dancing Script' o 'Parisienne';
+  background-color: $color-bg;
+  color: $color-text;
+}
+
+.App {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --swiper-theme-color: $color-bg;
+}
+
+.swiper-pagination {
+  position: relative !important;
+}
