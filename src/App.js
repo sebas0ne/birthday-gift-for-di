@@ -18,7 +18,7 @@ import './styles/main.scss';
 
 function App() {
   const [showContent, setShowContent] = useState(false);
-  const birthdayDate = '2025-07-01T00:00:00';
+  const birthdayDate = '2025-06-01T00:00:00';
 
   return (
     <div className="App">
