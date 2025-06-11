@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { gsap } from 'gsap';
 import CircularText from "../components/animations/CircularText";
 import '../styles/CountdownGate.scss';
 
 function CountdownGate({ targetDate, onComplete }) {
-  const calculateTimeLeft = () => {
+  const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(targetDate) - +new Date();
     let timeLeft = {};
 
@@ -18,7 +18,7 @@ function CountdownGate({ targetDate, onComplete }) {
     }
 
     return timeLeft;
-  };
+  }, [targetDate]);
 
   const [timeLeft, setTimeLeft] = useState({});
   const [finished, setFinished] = useState(false);
@@ -36,7 +36,7 @@ function CountdownGate({ targetDate, onComplete }) {
     }
 
     setIsReady(true);
-  }, []);
+  }, [calculateTimeLeft, onComplete]);
 
   // Countdown timer logic
   useEffect(() => {
@@ -62,17 +62,9 @@ function CountdownGate({ targetDate, onComplete }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [finished, onComplete, skipCountdown]);
+  }, [calculateTimeLeft, finished, onComplete, skipCountdown]);
 
-  // If not ready yet → render nothing
-  if (!isReady) {
-    return null;
-  }
-
-  // If we are skipping the countdown → render nothing
-  if (skipCountdown) {
-    return null;
-  }
+  if (!isReady || skipCountdown) return null;
 
   const formatTime = (value) => String(value).padStart(2, '0');
 
@@ -84,49 +76,21 @@ function CountdownGate({ targetDate, onComplete }) {
           onHover="pause"
           spinDuration={10}
           className="countdown"
-         />
+        />
       </div>
 
       <div className="countdown">
-        <div className="countdown-item">
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">{formatTime(timeLeft.days)}</div>
-              <div className="flip-card-back">{formatTime(timeLeft.days)}</div>
+        {['days', 'hours', 'minutes', 'seconds'].map((unit) => (
+          <div className="countdown-item" key={unit}>
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front">{formatTime(timeLeft[unit])}</div>
+                <div className="flip-card-back">{formatTime(timeLeft[unit])}</div>
+              </div>
             </div>
+            <span>{unit.toUpperCase()}</span>
           </div>
-          <span>DÍAS</span>
-        </div>
-
-        <div className="countdown-item">
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">{formatTime(timeLeft.hours)}</div>
-              <div className="flip-card-back">{formatTime(timeLeft.hours)}</div>
-            </div>
-          </div>
-          <span>HORAS</span>
-        </div>
-
-        <div className="countdown-item">
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">{formatTime(timeLeft.minutes)}</div>
-              <div className="flip-card-back">{formatTime(timeLeft.minutes)}</div>
-            </div>
-          </div>
-          <span>MINUTOS</span>
-        </div>
-
-        <div className="countdown-item">
-          <div className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">{formatTime(timeLeft.seconds)}</div>
-              <div className="flip-card-back">{formatTime(timeLeft.seconds)}</div>
-            </div>
-          </div>
-          <span>SEGUNDOS</span>
-        </div>
+        ))}
       </div>
     </div>
   );
