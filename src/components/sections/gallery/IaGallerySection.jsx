@@ -32,15 +32,15 @@ const FirstYearGallerySection = () => {
 
   const galleryItems = [
     {
-        img: '/images/ia-1.png',
+        img: '/images/ia-1.webp',
         caption: 'La IA nos hizo parte del universo de HP.',
     },
     {
-      img: '/images/ia-2.png',
+      img: '/images/ia-2.webp',
       caption: 'Juntos en la playa con estilo GTA, gracias IA.',
     },
     {
-      img: '/images/ia-3.png',
+      img: '/images/ia-3.webp',
       caption: 'La IA hizo estilo Disney nuestra foto favorita.',
     }
   ];

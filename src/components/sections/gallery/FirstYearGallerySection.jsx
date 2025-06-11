@@ -32,15 +32,15 @@ const FirstYearGallerySection = () => {
 
   const galleryItems = [
     {
-      img: '/images/sebasydi-primerviaje.png',
+      img: '/images/sebasydi-primerviaje.webp',
       caption: 'Nuestro primer viaje juntos.',
     },
     {
-      img: '/images/sebasysi-primera-navidad.png',
+      img: '/images/sebasydi-primera-navidad.webp',
       caption: 'Nuestra primera navidad.',
     },
     {
-      img: '/images/sebasydi-primer-añonuevo.png',
+      img: '/images/sebasydi-primer-añonuevo.webp',
       caption: 'Nuestro primer año nuevo.',
     }
   ];

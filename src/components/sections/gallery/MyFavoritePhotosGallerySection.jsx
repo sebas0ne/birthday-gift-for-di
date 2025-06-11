@@ -32,27 +32,27 @@ const MyFavoritePhotosGallerySection = () => {
 
   const galleryItems = [
     {
-      img: '/images/favoritephotos-1.jpg',
+      img: '/images/favoritephotos-1.webp',
       caption: 'Tan buena sonrisa como el chifa que compartimos',
     },
     {
-      img: '/images/favoritephotos-2.jpg',
+      img: '/images/favoritephotos-2.webp',
       caption: 'Playa y tu sonrisa.',
     },
     {
-      img: '/images/favoritephotos-3.jpg',
+      img: '/images/favoritephotos-3.webp',
       caption: 'Viendo tu peli favorita en Live Action',
     },
     {
-      img: '/images/favoritephotos-4.jpg',
+      img: '/images/favoritephotos-4.webp',
       caption: 'Viendo tu peli favorita en Live Action',
     },
     {
-      img: '/images/favoritephotos-5.jpg',
+      img: '/images/favoritephotos-5.webp',
       caption: 'Viendo tu peli favorita en Live Action',
     },
     {
-      img: '/images/favoritephotos-6.jpg',
+      img: '/images/favoritephotos-6.webp',
       caption: 'Viendo tu peli favorita en Live Action',
     }
   ];

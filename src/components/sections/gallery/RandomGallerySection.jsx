@@ -32,15 +32,15 @@ const RandomGallerySection = () => {
 
   const galleryItems = [
     {
-      img: '/images/random-1.png',
+      img: '/images/random-1.webp',
       caption: 'Nosotros y un filtro gracioso.',
     },
     {
-      img: '/images/random-2.jpg',
+      img: '/images/random-2.webp',
       caption: 'Playa y tu sonrisa.',
     },
     {
-      img: '/images/random-3.png',
+      img: '/images/random-3.webp',
       caption: 'Viendo tu peli favorita en Live Action',
     }
   ];
