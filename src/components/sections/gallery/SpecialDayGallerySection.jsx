@@ -32,15 +32,15 @@ const SpecialDayGallerySection = () => {
 
   const galleryItems = [
     {
-        img: '/images/specialday-1.jpg',
+        img: '/images/specialday-1.webp',
         caption: 'La IA nos hizo parte del universo de HP.',
     },
     {
-      img: '/images/specialday-2.jpg',
+      img: '/images/specialday-2.webp',
       caption: 'Juntos en la playa con estilo GTA, gracias IA.',
     },
     {
-      img: '/images/specialday-3.jpg',
+      img: '/images/specialday-3.webp',
       caption: 'La IA hizo estilo Disney nuestra foto favorita.',
     }
   ];
