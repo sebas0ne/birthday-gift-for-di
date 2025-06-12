@@ -2,16 +2,25 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useInView } from 'react-intersection-observer';
 import Gallery from "../../common/Gallery";
 import '../../../styles/sections/SectionGallerySecondary.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FirstYearGallerySection = () => {
-  const itemsRef = useRef([]);
+const IaGallerySection = () => {
+  const galleryContainerRef = useRef(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   useEffect(() => {
-    itemsRef.current.forEach((el) => {
+    if (!inView || !galleryContainerRef.current) return;
+
+    const elements = galleryContainerRef.current.querySelectorAll('.galeria-item');
+
+    elements.forEach((el) => {
       gsap.fromTo(
         el,
         { opacity: 0, y: 50 },
@@ -28,12 +37,12 @@ const FirstYearGallerySection = () => {
         }
       );
     });
-  }, []);
+  }, [inView]);
 
   const galleryItems = [
     {
-        img: '/images/gallery/ia-1.webp',
-        caption: 'La IA nos hizo parte del universo de HP.',
+      img: '/images/gallery/ia-1.webp',
+      caption: 'La IA nos hizo parte del universo de HP.',
     },
     {
       img: '/images/gallery/ia-2.webp',
@@ -46,10 +55,14 @@ const FirstYearGallerySection = () => {
   ];
 
   return (
-    <section className="galeria-secondary">
-        <Gallery images={galleryItems} title={'RECUERDOS CON IA'}/>
+    <section className="galeria-secondary" ref={ref}>
+      {inView && (
+        <div ref={galleryContainerRef}>
+          <Gallery images={galleryItems} title={'RECUERDOS CON IA'} />
+        </div>
+      )}
     </section>
   );
-}
+};
 
-export default FirstYearGallerySection;
+export default IaGallerySection;

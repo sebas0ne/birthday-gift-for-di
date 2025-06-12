@@ -2,16 +2,25 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useInView } from 'react-intersection-observer';
 import Gallery from "../../common/Gallery";
 import '../../../styles/sections/SectionGallerySecondary.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const BeachGallerySection = () => {
-  const itemsRef = useRef([]);
+  const galleryContainerRef = useRef(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   useEffect(() => {
-    itemsRef.current.forEach((el) => {
+    if (!inView || !galleryContainerRef.current) return;
+
+    const elements = galleryContainerRef.current.querySelectorAll('.galeria-item');
+
+    elements.forEach((el) => {
       gsap.fromTo(
         el,
         { opacity: 0, y: 50 },
@@ -28,7 +37,7 @@ const BeachGallerySection = () => {
         }
       );
     });
-  }, []);
+  }, [inView]);
 
   const galleryItems = [
     {
@@ -58,10 +67,14 @@ const BeachGallerySection = () => {
   ];
 
   return (
-    <section className="galeria">
-        <Gallery images={galleryItems} title={'EN LA PLAYITA'}/>
+    <section className="galeria" ref={ref}>
+      {inView && (
+        <div ref={galleryContainerRef}>
+          <Gallery images={galleryItems} title={'EN LA PLAYITA'} />
+        </div>
+      )}
     </section>
   );
-}
+};
 
 export default BeachGallerySection;

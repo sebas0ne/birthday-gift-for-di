@@ -1,17 +1,24 @@
-// src/components/sections/FirstYearGallerySection.jsx
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useInView } from 'react-intersection-observer';
 import Gallery from "../../common/Gallery";
 import '../../../styles/sections/SectionGallerySecondary.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FirstYearGallerySection = () => {
-  const itemsRef = useRef([]);
+  const sectionRef = useRef(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   useEffect(() => {
-    itemsRef.current.forEach((el) => {
+    if (!inView || !sectionRef.current) return;
+
+    const elements = sectionRef.current.querySelectorAll('.galeria-item');
+    elements.forEach((el) => {
       gsap.fromTo(
         el,
         { opacity: 0, y: 50 },
@@ -28,7 +35,8 @@ const FirstYearGallerySection = () => {
         }
       );
     });
-  }, []);
+  }, [inView]);
+
 
   const galleryItems = [
     {
@@ -40,16 +48,20 @@ const FirstYearGallerySection = () => {
       caption: 'Nuestra primera navidad.',
     },
     {
-      img: '/images/gallery/sebasydi-primer-añonuevo.webp',
+      img: '/images/gallery/sebasydi-primer-anonuevo.webp',
       caption: 'Nuestro primer año nuevo.',
     }
   ];
 
   return (
-    <section className="galeria-secondary">
-        <Gallery images={galleryItems} title={'NUESTRO PRIMER AÑO'}/>
+    <section className="galeria-secondary" ref={ref}>
+      <div ref={sectionRef}>
+        {inView && (
+          <Gallery images={galleryItems} title={'NUESTRO PRIMER AÑO'} />
+        )}
+      </div>
     </section>
   );
-}
+};
 
 export default FirstYearGallerySection;
