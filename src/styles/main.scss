@@ -26,3 +26,12 @@ html {
 .swiper-pagination {
   position: relative !important;
 }
+
+.loading {
+  text-align: center;
+  font-weight: 500;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #999;
+  animation: fadeIn 0.3s ease-in-out;
+}
