@@ -32,27 +32,27 @@ const BeachGallerySection = () => {
 
   const galleryItems = [
     {
-      img: '/images/playa-6.webp',
+      img: '/images/gallery/playa-6.webp',
       caption: 'La IA hizo estilo Disney nuestra foto favorita.',
     },
     {
-      img: '/images/playa-4.webp',
+      img: '/images/gallery/playa-4.webp',
       caption: 'La IA hizo estilo Disney nuestra foto favorita.',
     },
     {
-      img: '/images/playa-5.webp',
+      img: '/images/gallery/playa-5.webp',
       caption: 'La IA hizo estilo Disney nuestra foto favorita.',
     },
     {
-      img: '/images/playa-1.webp',
+      img: '/images/gallery/playa-1.webp',
       caption: 'La IA nos hizo parte del universo de HP.',
     },
     {
-      img: '/images/playa-2.webp',
+      img: '/images/gallery/playa-2.webp',
       caption: 'Juntos en la playa con estilo GTA, gracias IA.',
     },
     {
-      img: '/images/playa-3.webp',
+      img: '/images/gallery/playa-3.webp',
       caption: 'La IA hizo estilo Disney nuestra foto favorita.',
     },
   ];
