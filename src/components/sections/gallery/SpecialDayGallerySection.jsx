@@ -1,17 +1,26 @@
-// src/components/sections/FirstYearGallerySection.jsx
+// src/components/sections/SpecialDayGallerySection.jsx
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useInView } from 'react-intersection-observer';
 import Gallery from "../../common/Gallery";
 import '../../../styles/sections/SectionGallerySecondary.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SpecialDayGallerySection = () => {
-  const itemsRef = useRef([]);
+  const galleryContainerRef = useRef(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   useEffect(() => {
-    itemsRef.current.forEach((el) => {
+    if (!inView || !galleryContainerRef.current) return;
+
+    const elements = galleryContainerRef.current.querySelectorAll('.galeria-item');
+
+    elements.forEach((el) => {
       gsap.fromTo(
         el,
         { opacity: 0, y: 50 },
@@ -28,12 +37,12 @@ const SpecialDayGallerySection = () => {
         }
       );
     });
-  }, []);
+  }, [inView]);
 
   const galleryItems = [
     {
-        img: '/images/gallery/specialday-1.webp',
-        caption: 'La IA nos hizo parte del universo de HP.',
+      img: '/images/gallery/specialday-1.webp',
+      caption: 'La IA nos hizo parte del universo de HP.',
     },
     {
       img: '/images/gallery/specialday-2.webp',
@@ -46,10 +55,14 @@ const SpecialDayGallerySection = () => {
   ];
 
   return (
-    <section className="galeria-secondary">
-        <Gallery images={galleryItems} title={'DÍA ESPECIAL (TÚ ULTIMO CUMPLEAÑOS)'}/>
+    <section className="galeria-secondary" ref={ref}>
+      {inView && (
+        <div ref={galleryContainerRef}>
+          <Gallery images={galleryItems} title={'DÍA ESPECIAL (TU ÚLTIMO CUMPLEAÑOS)'} />
+        </div>
+      )}
     </section>
   );
-}
+};
 
 export default SpecialDayGallerySection;

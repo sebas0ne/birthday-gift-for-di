@@ -2,16 +2,25 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useInView } from 'react-intersection-observer';
 import Gallery from "../../common/Gallery";
 import '../../../styles/sections/SectionGallery.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const RandomGallerySection = () => {
-  const itemsRef = useRef([]);
+  const galleryContainerRef = useRef(null);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   useEffect(() => {
-    itemsRef.current.forEach((el) => {
+    if (!inView || !galleryContainerRef.current) return;
+
+    const elements = galleryContainerRef.current.querySelectorAll('.galeria-item');
+
+    elements.forEach((el) => {
       gsap.fromTo(
         el,
         { opacity: 0, y: 50 },
@@ -28,7 +37,7 @@ const RandomGallerySection = () => {
         }
       );
     });
-  }, []);
+  }, [inView]);
 
   const galleryItems = [
     {
@@ -46,10 +55,14 @@ const RandomGallerySection = () => {
   ];
 
   return (
-    <section className="galeria">
-        <Gallery images={galleryItems} title={'FOTOS RANDOM'}/>
+    <section className="galeria" ref={ref}>
+      {inView && (
+        <div ref={galleryContainerRef}>
+          <Gallery images={galleryItems} title={'FOTOS RANDOM'} />
+        </div>
+      )}
     </section>
   );
-}
+};
 
 export default RandomGallerySection;

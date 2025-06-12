@@ -134,6 +134,7 @@ export default function MovieCarousel() {
             <img
               src={movie.image}
               alt={movie.content}
+              loading="lazy"
               className="movie-poster"
             />
              <div className="carrusel-caption">{movie.content}</div>
